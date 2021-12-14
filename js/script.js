@@ -8,16 +8,20 @@
 */
 
 /* Mazes 
+    -playerLives = 3
     -finish first maze to continue to next
         -timer restarts after every maze 
     -low visablity
     -timed each maze
+        -run out of time you lose
+        - take to loser page
     -"mystery boxes"
         -random (lose one life or gain ability);
         -"doomsday" box
             -loses game
             -takes to loser page
-    -cannot accesss same mystery box once used 
+    -cannot access same mystery box once used 
+
 */
 
 /* Loser page
@@ -31,4 +35,17 @@
     - background 
     - play again
         -takes you back to first maze
+
 */
+
+/* winState
+    -When all mazes are passed
+    -gameOver
+*/
+
+/* loseState
+    -no more lives left 
+*/ 
+
+const $gameTitle = $('<h1>Labyrinth</h1>');
+$('body').append($gameTitle);
