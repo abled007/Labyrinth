@@ -46,6 +46,12 @@
 /* loseState
     -no more lives left 
 */ 
-
+//Title
 const $gameTitle = $('<h1>Labyrinth</h1>');
 $('body').append($gameTitle);
+
+//Cover Image
+const $coverImage = $('<img src = "https://i.redd.it/awl2w7ox6icy.jpg" width="1100" height="500">')
+$('body').append($coverImage);
+
+//
