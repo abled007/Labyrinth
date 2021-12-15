@@ -1,57 +1,19 @@
-/* cover screen
-    -background hyrule
-    -title  
-    -start button
-        -directs to first maze when clicked
-    -instruction 
-        -pops up instrutions when clicked
-*/
-
-/* Mazes 
-    -playerLives = 3
-    -finish first maze to continue to next
-        -timer restarts after every maze 
-    -low visablity
-    -timed each maze
-        -run out of time you lose
-        - take to loser page
-    -"mystery boxes"
-        -random (lose one life or gain ability);
-        -"doomsday" box
-            -loses game
-            -takes to loser page
-    -cannot access same mystery box once used 
-
-*/
-
-/* Loser page
-    -"game over" black bacground
-    -continue
-        -takes you back to first maze
-        -make sure mazes are reset to default
-*/
-
-/* Winner page 
-    - background 
-    - play again
-        -takes you back to first maze
-
-*/
-
-/* winState
-    -When all mazes are passed
-    -gameOver
-*/
-
-/* loseState
-    -no more lives left 
-*/ 
-//Title
-const $gameTitle = $('<h1>Labyrinth</h1>');
-$('body').append($gameTitle);
+// Container 1
+const $divImage = $('<div class = "container1"><div>');
+$('body').append($divImage);
 
 //Cover Image
-const $coverImage = $('<img src = "https://i.redd.it/awl2w7ox6icy.jpg" width="1100" height="500">')
-$('body').append($coverImage);
+const $coverImage = $('<img src = "https://i.redd.it/awl2w7ox6icy.jpg" width="100%" height="100%">')
+$('.container1').append($coverImage);
 
-//
+//Title
+const $gameTitle = $('<div class = "title">Labyrinth</div>');
+$('.container1').append($gameTitle);
+
+// Start button
+const $gameStart = $('<div class = "start">Start</div>');
+$('.container1').append($gameStart);
+
+//How to Play 
+const $gameIntro = $('<div class = "intro">How to Play</div>');
+$('.container1').append($gameIntro);
