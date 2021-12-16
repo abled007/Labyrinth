@@ -1,4 +1,4 @@
-// Container 1
+//Container 1
 const $divImage = $('<div class = "container1"><div>');
 $('body').append($divImage);
 
@@ -34,43 +34,89 @@ $('.container1').append($gameStart);
 $(document).ready( 
     $('.start').on('click', function(){
        
+        // Find Canvas Element
+        
+        const canvas = $('#myCanvas');
+        
+        // 0 = path, 1 = blocked, 2 = start, 3 = end
+        const $gameBoard = [
+            
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0],
+            [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
+            [0,0,0,0,1,0,0,0,0,2,0,0,0,0,1,0,0,0,0],
+            
+        ]
+        
+        // player 
+        const $player = {
+            x: 0,
+            y: 0,
+        }
+        
+        // Creating the board
+        function canvasBoard() {
+            const ctx = canvas[0].getContext('2d');
+            const blockSize = $gameBoard.length;
+            //Positon of board
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            //Making the board fit
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'black';
+            for (let y = 0; y < $gameBoard.length; y++) {
+                for (let x = 0; x < $gameBoard[y].length; x++) {
+                    if($gameBoard[y][x] === 1) {
+                        ctx.fillRect(x*blockSize, y*blockSize, blockSize, blockSize);
+                    } else if (board[y][x] === 3){
+                        // Creating the endpont of the game 
+                        ctx.beginPath();
+                        ctx.lineWidth = 5;
+                        ctx.strokeStyle = "green";
+                        ctx.moveTo(x*blockSize, y*blockSize);
+                        ctx.lineTo((x+1)*blockSize, (y+1)*blockSize);
+                        ctx.moveTo(x*blockSize, (y+1)*blockSize);
+                        ctx.lineTo((x+1)*blockSize, y*blockSize);
+                        ctx.stroke();
+                    }
+                }
+            }
+            ctx.beginPath();
+            const plyr = blockSize / 2;
+            ctx.fillStyle = "blue";
+            ctx.arc($player.x*blockSize+plyr, $player.y*blockSize+plyr, plyr, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+        
+        
+        //Check to see if the new space is inside the board and not a wall
+        function canMove(x, y) {
+            return (y >= 0) && (y < $gameBoard.length) && (x >= 0) && (x < $gameBoard[y].length) && ($gameBoard[y][x] != 1);
+        }
+        
+        $(document).keyup(function(e){
+            e.preventDefault();
+            if((e.which == 38) && canMove($player.x, $player.y-1))//Up arrow
+            $player.y--;
+            else if((e.which == 40) && canMove($player.x, $player.y+1)) // down arrow
+            $player.y++;
+            else if((e.which == 37) && canMove($player.x-1, $player.y))
+            $player.x--;
+            else if((e.which == 39) && canMove($player.x+1, $player.y))
+            $player.x++;
+            $canvasBoard();
+        }); 
+            
     })
-)
-
-// Maze Gameboard
-
-
-// 0 = path, 1 = blocked, 2 = start, 3 = end
-let $gameBoard = [
     
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
-    [0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
-    [0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0],
-    [0,0,0,0,1,0,0,0,0,2,0,0,0,0,1,0,0,0,0],
-    
-]
-
-// player 
-//let $player = 
-
-
-
-function $canvasBoard() {
-    let canvas = $('#myCanvas');
-    let ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#FF0000';
-    ctx.fillRect(0, 0, 150, 75);
-}
-$canvasBoard();
-
-
+    )
+    $('body').append('.start');
