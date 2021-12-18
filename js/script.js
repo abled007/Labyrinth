@@ -75,6 +75,83 @@ function $drawBoard() {
 }
 $drawBoard();
 
+
+//Create lives 
+let $lives = ["", "", ""];
+const $livesLeft = [
+    [0,0,0],
+    [0,0,1],
+    [0,1,1],   
+];
+
+const $noLives = [1,1,1];
+
+let $redHeart = 
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.moveTo(75, 40);
+    ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+    ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+    ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+    ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+    ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+    ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+    ctx.fill();
+
+let $greyHeart = 
+    ctx.beginPath();
+    ctx.fillStyle = "grey";
+    ctx.moveTo(75, 40);
+    ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+    ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+    ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+    ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+    ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+    ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+    ctx.fill();
+    
+
+function $drawLives(){
+    for (let i = 0; i < $lives.length; i++){
+
+
+
+       
+        
+
+    }
+}
+$drawLives();
+
+
+
+
+
+
+//Creat a function when player lands on trapDoor they loose a life
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Shrine
 // function $shrine(){
 //     for (let y = 0; y < $gameBoard.length; y++) {
