@@ -77,14 +77,13 @@ $drawBoard();
 
 
 //Create lives 
-let $lives = ["", "", ""];
-const $livesLeft = [
-    [0,0,0],
-    [0,0,1],
-    [0,1,1],   
-];
 
-const $noLives = [1,1,1];
+
+
+let $fullLives = [0,0,0];
+let $twoLives = [0,0,1];
+let $oneLife = [0,1,1];
+let $noLives = [1,1,1];
 
 let $redHeart = 
     ctx.beginPath();
@@ -109,26 +108,20 @@ let $greyHeart =
     ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
     ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
     ctx.fill();
-    
+  
+const $livesGrid = $('<div class="grid"></div>');
+$('body').append($livesGrid);
 
-function $drawLives(){
-    for (let i = 0; i < $lives.length; i++){
-
-
-
-       
-        
-
-    }
-}
-$drawLives();
+let $livesLeft = ["", "", ""];
+$.each($livesLeft, function(index, value){
+    $('.grid').append(value);
+})
 
 
 
 
+//Create a function when player lands on trapDoor they loose a life
 
-
-//Creat a function when player lands on trapDoor they loose a life
 
 
 
