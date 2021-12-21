@@ -75,24 +75,34 @@ function $drawBoard() {
         }
     }
     function $circle() { //player
-        ctx.clearRect(0, 0, $canvas.width, $canvas.height);
         ctx.beginPath();
+        ctx.clearRect(0, 0, $canvas.width, $canvas.height);
         let half = blockSize/2;
         ctx.fillStyle = '#00aaff';
         ctx.arc($player.x*blockSize+half, $player.y*blockSize+half, half, 0, 2*Math.PI);
         ctx.fill();
-        $('body').toggleClass('#myCanvas', false);
     };
     $circle();
 }
 $drawBoard();
 
+//Winner
+function $checkWin() {
+    if($gameBoard[$player.x][$player.y] === 2);
+    ctx.clearRect(0, 0, $canvas.width, $canvas.height);
+    ctx.fillText('You made it to the Shrine!', 50 , 90)
+    $gameActive = false;
+    return;
+}
 
 //Create lives 
 let $fullLives = [0,0,0];
 let $twoLives = [0,0,1];
 let $oneLife = [0,1,1];
 let $noLives = [1,1,1];
+
+let $heart = $('.bi bi-suit-heart-fill');
+let $noHeart = $('bi bi-suit-heart');
 
   
     const $livesGrid = $('<div class="grid"></div>');
