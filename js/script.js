@@ -88,12 +88,17 @@ $drawBoard();
 
 //Winner
 function $checkWin() {
-    if($gameBoard[$player.x][$player.y] === 2);
-    ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-    ctx.fillText('You made it to the Shrine!', 50 , 90)
-    $gameActive = false;
-    return;
-}
+    for (let i = 0; i < $gameBoard.length; i++){
+        if($gameBoard[$player.x][$player.y] === 2){
+        ctx.clearRect(0, 0, $canvas.width, $canvas.height);
+        ctx.font = '30px Verdana';
+        ctx.fillText('You made it to the Shrine!', $canvas.width/2, $canvas.height/2)
+        $gameActive = false;
+        return;
+        }
+    }
+};
+$checkWin();
 
 //Create lives 
 let $fullLives = [0,0,0];
