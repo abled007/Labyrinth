@@ -27,7 +27,7 @@ let $gameBoard = [
     [0,0,0,1,0,1,0,0,0,0,0,0,0,3,0,1,0,0,0,0,1],
     [1,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0],
     [0,0,0,1,1,1,0,0,0,0,0,0,0,3,0,1,0,1,0,1,1],
-    [0,1,0,0,0,1,0,0,0,3,0,0,0,0,0,1,0,1,0,0,0],
+    [0,1,0,0,0,1,0,0,0,3,2,0,0,0,0,1,0,1,0,0,0],
     [0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1],
     [0,1,3,0,0,0,1,0,0,0,0,1,0,0,0,1,0,3,0,0,1],
     [1,1,1,1,1,0,0,0,1,1,0,0,0,1,0,0,0,1,1,1,1],
@@ -86,15 +86,17 @@ function $drawBoard() {
 }
 $drawBoard();
 
+const $playerStatus = $('<h1 class="status"></h1>');
+$('body').append($playerStatus);
+
 //Winner
 function $checkWin() {
     for (let i = 0; i < $gameBoard.length; i++){
         if($gameBoard[$player.x][$player.y] === 2){
-        ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-        ctx.font = '30px Verdana';
-        ctx.fillText('You made it to the Shrine!', $canvas.width/2, $canvas.height/2)
-        $gameActive = false;
-        return;
+            $('.status').innerHTML('You Win!');
+            ctx.clearRect(0, 0, $canvas.width, $canvas.height);
+            $gameActive = false;
+            return;
         }
     }
 };
@@ -143,6 +145,7 @@ $(document).keydown(function(e){
     else if((key == 40 && canMove($player.x, $player.y+1))) $player.y++;
     //down
     $drawBoard();
+    $checkWin();
 });
 
 // $(document).ready(function(){
