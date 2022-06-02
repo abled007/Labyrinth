@@ -1,4 +1,4 @@
-# The-Game
+# Labyrinth
 User Stories
     . As a user, I want to read the instructions before I start the game.
     . As a user, I want to click start to begin playing.
