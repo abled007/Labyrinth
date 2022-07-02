@@ -16,6 +16,7 @@ a {
     text-decoration: none;
     font-size: 50px;
     font-weight: bold;
+    font-family: 'Ramabhadra', sans-serif;
 }
 
 a:active, a:link, a:visited {
@@ -31,6 +32,7 @@ a:hover {
 h1 {
     color: white;
     font-size: 50px;
+    font-family: 'Ramabhadra', sans-serif;
 }
 
 .play {
@@ -40,6 +42,7 @@ h1 {
     padding: 20px;
     position: fixed;
     margin: 100px;
+    font-family: 'Ramabhadra', sans-serif;
 }
 
 h1:hover + .play {
@@ -48,13 +51,16 @@ h1:hover + .play {
 
 h1, a {
     margin-left: 55px;
+    margin-block-end: 0;
 }
 
 h2 {
     font-family: 'Cinzel', serif;
     color: white;
-    font-size: 115px;
+    font-size: 130px;
     position: fixed;
-    right: 30px;
+    right: 50px;
     bottom: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
 }
