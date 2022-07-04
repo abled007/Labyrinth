@@ -1,14 +1,15 @@
 #myCanvas {
-    padding: 100px;
+    padding: 50px;
     margin-right: auto;
     margin-left: auto; 
+    background-color: beige;
 }
 
 body {
     background-image: url("https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5721/5721500cv12d.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
+    /* background-position: center; */
     background-size: cover;
 }
 
@@ -34,7 +35,6 @@ h1 {
     font-size: 50px;
     font-family: 'Ramabhadra', sans-serif;
     width: 300px;
-    height: auto;
 }
 
 .play {
