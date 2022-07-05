@@ -1,18 +1,13 @@
 let $canvas = $('#myCanvas');
 let $gameActive = true;
 
-let $player = {
-    x: 13,
-    y: 25,
-}
-
 let $gameBoard = [
     
     [0,0,0,0,1,0,3,0,1,1,0,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,1],          
     [0,0,0,0,1,0,1,0,0,1,0,1,0,0,0,1,1,1,1,3,1,1,0,1,0,0,0],
     [1,1,1,3,1,0,1,1,0,1,0,1,0,2,0,1,0,0,0,0,0,1,0,3,0,0,1],
     [1,1,1,0,1,0,1,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0],
-    [0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,0],
+    [0,0,0,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,0,0,0],
     [0,0,0,0,1,3,0,0,1,0,0,0,0,0,0,0,0,0,1,0,3,0,0,1,0,0,1],
     [1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,0,0],
     [1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,0,0,0],
@@ -37,9 +32,15 @@ let $gameBoard = [
             
 ];
 
-let goal = $gameBoard[2]
+let $player = {
+    x: 13,
+    y: 25,
+}
 
-let trap = $gameBoard[3]
+let $goal = {
+    x: 13,
+    y: 2,
+}
 
 const ctx = $canvas[0].getContext('2d');
 let blockSize = $gameBoard.length;
@@ -94,26 +95,16 @@ const $playerStatus = $('<h1 class="status"></h1>');
 $('body').append($playerStatus);
 
 function $checkWin() {
-    for (let y = 0; y < $gameBoard.length; y++){
-        if($gameBoard[$player.x][$player.y] === 2){
-            $('.status').innerHTML('You Win!');
-            ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-            $gameActive = false;
-            return;
-        }
+    if($player.y == $goal.y && $player.x == $goal.x) {
+        return console.log("winner")
     }
+    $user();
 };
 $checkWin();
-
-let $fullLives = [0,0,0];
-let $twoLives = [0,0,1];
-let $oneLife = [0,1,1];
-let $noLives = [1,1,1];
 
 let $heart = $('.bi bi-suit-heart-fill');
 let $noHeart = $('bi bi-suit-heart');
 
-  
 const $livesGrid = $('<div class="grid"></div>');
 $('body').append($livesGrid);
     
@@ -128,7 +119,6 @@ function canMove(x, y) {
 
 $(document).keydown(function(e){
     e.preventDefault();
-    console.log(e);
     let key = e.which;
     if((key == 37) && canMove($player.x-1, $player.y)) $player.x--;
     else if((key == 38 && canMove($player.x, $player.y-1))) $player.y--;
