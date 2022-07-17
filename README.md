@@ -16,4 +16,3 @@
     - CSS
     - HTML
 
-## Deployment
