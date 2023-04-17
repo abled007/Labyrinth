@@ -7,12 +7,14 @@
 <!-- <img width="271" alt="Screen Shot 2022-07-16 at 6 30 39 PM" src="https://user-images.githubusercontent.com/93559383/179380228-e5de0261-31e3-4d22-b391-4ea1812ccec9.png"> -->
 
 ## User Stories
-    - As a user, I want to read the instructions before I start the game.
+    - As a user, I want to read the instructions before I start.
     - As a user, I want to click start to begin playing.
-    - As a user, I want to use arrow keys to navigate. 
+    - As a user, I want to use arrow keys to navigate.  
+    - As a user, I want to be able to see my progress on the screen. 
 
 ## Technology 
     - JavaScript
     - CSS
     - HTML
+    - JQuery
 
