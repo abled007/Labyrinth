@@ -12,7 +12,7 @@ let $gameBoard = [
     [1,0,1,0,1,3,0,0,0,0,1,0,0,0,0,0,1,0,0,0,3,0,0,1,0,0,1],
     [1,0,1,1,1,1,1,1,1,0,1,0,0,2,0,0,1,0,1,1,1,1,1,0,0,1,1],
     [1,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,1],
-    [1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,0,1],
+    [1,1,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,0,0,0,0,1,1,0,1],
     [1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,3,0,1,0,1,1,0,0,1,0,1],
     [1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,0,0,1,1,0,1,0,1],
     [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,0,1,1],
@@ -90,7 +90,6 @@ function $drawBoard() {
 }
 $drawBoard();
 
-
 function canMove(x, y) {
     return (y >= 0) && (y < $gameBoard.length) && (x >= 0) && (x < $gameBoard[y].length) && ($gameBoard[y][x] != 1);
 };
@@ -101,15 +100,17 @@ function $checkWin() {
         console.log("winner");
         return
     } 
-    // for (let y = 0; y < $gameBoard.length; y++) {
-    //     for (let x = 0; x < $gameBoard[y].length; x++) {
-    //         if($gameBoard[y][x] === 3) {
-    //             console.log('loser')
-    //             return
-    //         }
-    //     }
-    // }    
+    for (let y = 0; y < $gameBoard.length; y++) {
+        for (let x = 0; x < $gameBoard[y].length; x++) {
+            if($gameBoard[y][x] == 3) {
+                 $gameActive = false;
+                 console.log("loser");
+                 return
+            }
+        }
+    }    
     $user();
+    $drawBoard();
 };
 $checkWin();
 
